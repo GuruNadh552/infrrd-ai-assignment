@@ -35,6 +35,11 @@ export class RideService {
       if (ride.id !== rideId) return ride;
 
       found = true;
+
+      if (!this.isTimeInFuture(ride.time)) {
+        throw new Error('Cannot book a ride whose departure time has passed');
+      }
+
       this.validateBooking(ride, empId);
 
       return {
