@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Ride } from 'src/app/models/ride';
 
 @Component({
   selector: 'app-ride-list',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./ride-list.component.scss']
 })
 export class RideListComponent {
-
+  @Input() rides: Ride[] = [];
 }

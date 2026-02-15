@@ -1,45 +1,84 @@
 <div class="ride-card">
   <div class="ride-details">
     <div class="ride-vehice-details">
-      <div class="ride-icon">
-        <i class="material-icons">home</i>
+
+      <div class="ride-icon" [ngClass]="{
+        'car' : ride.vehicleType === 'Car',
+        'bike' : ride.vehicleType === 'Bike'
+      }">
+        <i class="material-icons">
+          {{ ride.vehicleType === 'Car' ? 'airport_shuttle' : 'two_wheeler' }}
+        </i>
       </div>
+
       <div class="ride-main-details">
         <div class="vehicle-no">
-          AAAA
-          <span class="chip">Car</span>
+          {{ ride.vehicleNo }}
+          <span class="chip">{{ ride.vehicleType }}</span>
         </div>
         <div class="employee-id">
-          By Gurunadh
+          By {{ ride.employeeId }}
         </div>
       </div>
     </div>
+
     <div class="ride-time-details">
       <div class="ride-time">
         <i class="material-icons">schedule</i>
-        1:10 AM
+        {{ formattedTime }}
       </div>
       <div class="seats-left">
         <i class="material-icons">group</i>
-        4 seats left
+        {{ ride.seats }} seat{{ ride.seats !== 1 ? 's' : '' }} left
       </div>
     </div>
   </div>
+
   <div class="destination-details">
     <div class="from">
-      <i class="material-icons">circle</i> A
+      <i class="material-icons">circle</i> {{ ride.pickup }}
     </div>
     <i class="material-icons arrow">arrow_forward</i>
     <div class="to">
-      B <i class="material-icons">circle</i>
+      {{ ride.destination }} <i class="material-icons">circle</i>
     </div>
   </div>
+
   <div class="booking-container">
-    <button class="button-full" *ngIf="!isBookingMode" (click)="isBookingMode = true">Book this Ride</button>
+
+    <button
+      class="button-full"
+      *ngIf="!isBookingMode && ride.seats > 0"
+      (click)="isBookingMode = true"
+    >
+      Book this Ride
+    </button>
+
+    <button
+      class="button-full disabled"
+      *ngIf="ride.seats <= 0"
+      disabled
+    >
+      Fully Booked
+    </button>
+
     <div class="form-booking-details" *ngIf="isBookingMode">
-      <input type="text" placeholder="Employee ID" />
-      <button class="bg-green">Confirm</button>
-      <button class="outline">Cancel</button>
+      <input
+        type="text"
+        placeholder="Employee ID"
+        [(ngModel)]="employeeId"
+      />
+
+      <button class="bg-green" (click)="confirmBooking()">
+        Confirm
+      </button>
+
+      <button class="outline" (click)="cancel()">
+        Cancel
+      </button>
+
     </div>
+    <div class="error" *ngIf="error">{{ error }}</div>
+
   </div>
 </div>

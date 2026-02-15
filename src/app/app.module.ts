@@ -10,6 +10,7 @@ import { AddRideComponent } from './components/add-ride/add-ride.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { Route, RouterModule } from '@angular/router';
 import { RideListComponent } from './components/ride-list/ride-list.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const ROUTES: Route[] = [
   {
@@ -37,7 +38,7 @@ const ROUTES: Route[] = [
     DashboardComponent,
     RideListComponent,
   ],
-  imports: [BrowserModule, RouterModule.forRoot(ROUTES)],
+  imports: [BrowserModule, RouterModule.forRoot(ROUTES),FormsModule,ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

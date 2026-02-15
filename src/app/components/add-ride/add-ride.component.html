@@ -1,42 +1,63 @@
 <div class="ride-config-form">
-  <div class="ride-config-header">
-    Add New Ride
-  </div>
+  <div class="ride-config-header">Add New Ride</div>
   <div class="ride-config-subtitle">
     Share your commute with colleagues
   </div>
-  <form>
+
+  <form [formGroup]="rideForm">
     <div class="form-group">
       <div class="form-control employee-id-control">
         <div class="label">Employee ID</div>
         <div class="control">
           <i class="material-icons">tag</i>
-          <input type="text" id="employeeID" placeholder="EMP 001"/>
+          <input type="text" placeholder="EMP 001" formControlName="employeeId" />
+        </div>
+        <div class="error"
+          [ngStyle]="{
+            visibility:
+              rideForm.get('employeeId')?.invalid &&
+              rideForm.get('employeeId')?.touched
+                ? 'visible'
+                : 'hidden'
+          }">
+          Employee ID is required
         </div>
       </div>
-
       <div class="form-control vehicle-type-control">
         <div class="label">Vehicle Type</div>
         <div class="control">
-          <select>
-            <option>
-              <i class="material-icons">#</i>
-              Car
-            </option>
-            <option>
-              <i class="material-icons">#</i>
-              Bike
-            </option>
+          <select formControlName="vehicleType">
+            <option value="Car">Car</option>
+            <option value="Bike">Bike</option>
           </select>
+        </div>
+        <div class="error"
+          [ngStyle]="{
+            visibility:
+              rideForm.get('vehicleType')?.invalid &&
+              rideForm.get('vehicleType')?.touched
+                ? 'visible'
+                : 'hidden'
+          }">
+          Vehicle Type is required
         </div>
       </div>
     </div>
-
     <div class="form-group">
       <div class="form-control vehicle-number-control">
         <div class="label">Vehicle Number</div>
         <div class="control">
-          <input type="text" placeholder="AP39SF1001" />
+          <input type="text" placeholder="AP39SF1001" formControlName="vehicleNo" />
+        </div>
+        <div class="error"
+          [ngStyle]="{
+            visibility:
+              rideForm.get('vehicleNo')?.invalid &&
+              rideForm.get('vehicleNo')?.touched
+                ? 'visible'
+                : 'hidden'
+          }">
+          Vehicle Number is required
         </div>
       </div>
 
@@ -44,8 +65,26 @@
         <div class="label">Vacant Seats</div>
         <div class="control">
           <i class="material-icons">group</i>
-          <input type="number" min="0" max="4" />
+          <input type="number" min="1" max="6" formControlName="seats" />
         </div>
+        <div
+        class="error"
+        [ngStyle]="{
+          visibility:
+            rideForm.get('seats')?.invalid &&
+            rideForm.get('seats')?.touched
+              ? 'visible'
+              : 'hidden'
+        }"
+      >
+        <ng-container *ngIf="rideForm.get('vehicleType')?.value === 'Bike'">
+          Bike can have only 1 seat
+        </ng-container>
+
+        <ng-container *ngIf="rideForm.get('vehicleType')?.value === 'Car'">
+          Car can have maximum 4 seats
+        </ng-container>
+      </div>
       </div>
     </div>
 
@@ -54,7 +93,17 @@
         <div class="label">Pickup Point</div>
         <div class="control">
           <i class="material-icons">location_on</i>
-          <input type="text" placeholder="Gachibowli,Hyderabad"/>
+          <input type="text" placeholder="Gachibowli, Hyderabad" formControlName="pickup" />
+        </div>
+        <div class="error"
+          [ngStyle]="{
+            visibility:
+              rideForm.get('pickup')?.invalid &&
+              rideForm.get('pickup')?.touched
+                ? 'visible'
+                : 'hidden'
+          }">
+          Pickup Point is required
         </div>
       </div>
 
@@ -62,24 +111,54 @@
         <div class="label">Destination</div>
         <div class="control">
           <i class="material-icons">location_on</i>
-          <input type="text" placeholder="Gowlidoddy,Hyderabad"/>
+          <input type="text" placeholder="Gowlidoddy, Hyderabad" formControlName="destination" />
+        </div>
+        <div class="error"
+          [ngStyle]="{
+            visibility:
+              rideForm.get('destination')?.invalid &&
+              rideForm.get('destination')?.touched
+                ? 'visible'
+                : 'hidden'
+          }">
+          Destination is required
         </div>
       </div>
-
     </div>
 
     <div class="form-control depature-time-control">
       <div class="label">Departure Time</div>
       <div class="control">
         <i class="material-icons">schedule</i>
-        <input type="time" />
+        <input type="time" formControlName="time"/>
+      </div>
+      <div class="error"
+        [ngStyle]="{
+          visibility:
+            rideForm.get('time')?.invalid &&
+            rideForm.get('time')?.touched
+              ? 'visible'
+              : 'hidden'
+        }">
+        Departure Time is required
       </div>
     </div>
 
+    <div class="error-msg" *ngIf="error">{{ error }}</div>
+
     <div class="actions-button">
-      <button type="button" class="outline" (click)="navigateToHome()">Cancel</button>
-      <button type="button">Publish Ride</button>
+      <button type="button" class="outline" (click)="navigateToHome()">
+        Cancel
+      </button>
+
+      <button
+        type="button"
+        [disabled]="rideForm.invalid"
+        (click)="publishRide()"
+      >
+        Publish Ride
+      </button>
     </div>
 
   </form>
-  </div>
+</div>

@@ -9,4 +9,6 @@ export interface Ride {
   time: string;
   pickup: string;
   destination: string;
+  booked_by : string[];
+  created_at : string
 }

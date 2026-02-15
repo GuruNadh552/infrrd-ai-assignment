@@ -1,3 +1,11 @@
-<app-stats [rides]="[]"></app-stats>
-<app-filters></app-filters>
-<app-ride-list></app-ride-list>
+<app-stats [rides]="rides"></app-stats>
+
+<app-filters
+  [filterTime]="filterTime"
+  [vehicleFilter]="vehicleFilter"
+  (filterTimeChange)="onTimeChange($event)"
+  (vehicleFilterChange)="onVehicleChange($event)"
+  (clearFilters)="onClearFilters()"
+></app-filters>
+
+<app-ride-list [rides]="filteredRides"></app-ride-list>

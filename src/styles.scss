@@ -37,4 +37,9 @@ button{
     background-color: rgba(163, 163, 246, 0.222);
     border-color: rgb(79 70 229) ;
   }
+
+  &:disabled{
+    background-color: rgba(163, 163, 246, 1);
+    pointer-events: none;
+  }
 }
