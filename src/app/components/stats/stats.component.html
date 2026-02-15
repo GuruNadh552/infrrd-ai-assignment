@@ -1,1 +1,39 @@
-<p>stats works!</p>
+<div class="stats-container">
+  <div class="stats-title">
+    Today's Rides
+  </div>
+  <div class="stats-sub-title">
+    Saturday, February 14, 2026
+  </div>
+
+  <div class="stats-cards-container">
+      <div
+        *ngFor="let stat of stats; let i = index"
+        class="stat-card"
+      >
+        <div class="stat-content">
+          <div class="icon-box" [ngClass]="stat.colorClass">
+            <ng-container [ngSwitch]="stat.icon">
+              <span *ngSwitchCase="'route'" class="material-icons">
+                  sync_alt
+              </span>
+              <span *ngSwitchCase="'car'" class="material-icons">
+                airport_shuttle
+              </span>
+              <span *ngSwitchCase="'bike'" class="material-icons">
+                two_wheeler
+              </span>
+              <span *ngSwitchCase="'users'" class="material-icons">
+                group
+              </span>
+            </ng-container>
+          </div>
+
+          <div class="stat-values">
+            <p class="value">{{ stat.value }}</p>
+            <p class="label">{{ stat.label }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

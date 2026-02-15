@@ -1,1 +1,66 @@
-<p>filters works!</p>
+<div class="filter-card" >
+  <div class="header">
+    <div class="title">
+      <span class="material-icons">filter_alt</span>
+      <span>Filter Rides</span>
+    </div>
+
+    <button
+      class="clear-btn"
+      (click)="onClear()"
+    >
+      <span class="material-icons">close</span>Clear
+    </button>
+  </div>
+
+  <div class="filters">
+    <div class="group">
+      <label>Your Departure Time</label>
+      <div class="input-wrapper">
+        <span class="input-icon material-icons">
+          schedule
+        </span>
+        <input
+          type="time"
+          [value]="filterTime"
+          (input)="setTime($any($event.target).value)"
+        />
+      </div>
+
+      <p class="hint" *ngIf="filterTime">
+        Showing rides within ±60 min of {{ filterTime }}
+      </p>
+    </div>
+
+    <div class="group">
+      <label>Vehicle Type</label>
+      <div class="buttons">
+        <button
+        [ngClass]="{'active' : vehicleFilter === ''}"
+        class="outline pill"
+          (click)="setVehicle('')"
+        >
+          All
+        </button>
+
+        <button
+          [ngClass]="{'active' : vehicleFilter === 'Car'}"
+          class="outline pill"
+          (click)="setVehicle('Car')"
+        >
+          <i class="material-icons">airport_shuttle</i>
+          Car
+        </button>
+
+        <button
+        [ngClass]="{'active' : vehicleFilter === 'Bike'}"
+          class="outline pill"
+          (click)="setVehicle('Bike')"
+        >
+        <i class="material-icons">two_wheeler</i>
+        Bike
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,1 +1,45 @@
-<p>ride-card works!</p>
+<div class="ride-card">
+  <div class="ride-details">
+    <div class="ride-vehice-details">
+      <div class="ride-icon">
+        <i class="material-icons">home</i>
+      </div>
+      <div class="ride-main-details">
+        <div class="vehicle-no">
+          AAAA
+          <span class="chip">Car</span>
+        </div>
+        <div class="employee-id">
+          By Gurunadh
+        </div>
+      </div>
+    </div>
+    <div class="ride-time-details">
+      <div class="ride-time">
+        <i class="material-icons">schedule</i>
+        1:10 AM
+      </div>
+      <div class="seats-left">
+        <i class="material-icons">group</i>
+        4 seats left
+      </div>
+    </div>
+  </div>
+  <div class="destination-details">
+    <div class="from">
+      <i class="material-icons">circle</i> A
+    </div>
+    <i class="material-icons arrow">arrow_forward</i>
+    <div class="to">
+      B <i class="material-icons">circle</i>
+    </div>
+  </div>
+  <div class="booking-container">
+    <button class="button-full" *ngIf="!isBookingMode" (click)="isBookingMode = true">Book this Ride</button>
+    <div class="form-booking-details" *ngIf="isBookingMode">
+      <input type="text" placeholder="Employee ID" />
+      <button class="bg-green">Confirm</button>
+      <button class="outline">Cancel</button>
+    </div>
+  </div>
+</div>

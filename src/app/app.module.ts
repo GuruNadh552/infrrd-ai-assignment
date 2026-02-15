@@ -7,6 +7,24 @@ import { StatsComponent } from './components/stats/stats.component';
 import { FiltersComponent } from './components/filters/filters.component';
 import { RideCardComponent } from './components/ride-card/ride-card.component';
 import { AddRideComponent } from './components/add-ride/add-ride.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { Route, RouterModule } from '@angular/router';
+import { RideListComponent } from './components/ride-list/ride-list.component';
+
+const ROUTES: Route[] = [
+  {
+    path: '',
+    component: DashboardComponent,
+  },
+  {
+    path : 'add',
+    component : AddRideComponent
+  },
+  {
+    path : '**',
+    redirectTo : ''
+  }
+];
 
 @NgModule({
   declarations: [
@@ -15,12 +33,12 @@ import { AddRideComponent } from './components/add-ride/add-ride.component';
     StatsComponent,
     FiltersComponent,
     RideCardComponent,
-    AddRideComponent
+    AddRideComponent,
+    DashboardComponent,
+    RideListComponent,
   ],
-  imports: [
-    BrowserModule
-  ],
+  imports: [BrowserModule, RouterModule.forRoot(ROUTES)],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,1 +1,85 @@
-<p>add-ride works!</p>
+<div class="ride-config-form">
+  <div class="ride-config-header">
+    Add New Ride
+  </div>
+  <div class="ride-config-subtitle">
+    Share your commute with colleagues
+  </div>
+  <form>
+    <div class="form-group">
+      <div class="form-control employee-id-control">
+        <div class="label">Employee ID</div>
+        <div class="control">
+          <i class="material-icons">tag</i>
+          <input type="text" id="employeeID" placeholder="EMP 001"/>
+        </div>
+      </div>
+
+      <div class="form-control vehicle-type-control">
+        <div class="label">Vehicle Type</div>
+        <div class="control">
+          <select>
+            <option>
+              <i class="material-icons">#</i>
+              Car
+            </option>
+            <option>
+              <i class="material-icons">#</i>
+              Bike
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="form-control vehicle-number-control">
+        <div class="label">Vehicle Number</div>
+        <div class="control">
+          <input type="text" placeholder="AP39SF1001" />
+        </div>
+      </div>
+
+      <div class="form-control vacant-seats-control">
+        <div class="label">Vacant Seats</div>
+        <div class="control">
+          <i class="material-icons">group</i>
+          <input type="number" min="0" max="4" />
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="form-control pickup-point-control">
+        <div class="label">Pickup Point</div>
+        <div class="control">
+          <i class="material-icons">location_on</i>
+          <input type="text" placeholder="Gachibowli,Hyderabad"/>
+        </div>
+      </div>
+
+      <div class="form-control pickup-point-control">
+        <div class="label">Destination</div>
+        <div class="control">
+          <i class="material-icons">location_on</i>
+          <input type="text" placeholder="Gowlidoddy,Hyderabad"/>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="form-control depature-time-control">
+      <div class="label">Departure Time</div>
+      <div class="control">
+        <i class="material-icons">schedule</i>
+        <input type="time" />
+      </div>
+    </div>
+
+    <div class="actions-button">
+      <button type="button" class="outline" (click)="navigateToHome()">Cancel</button>
+      <button type="button">Publish Ride</button>
+    </div>
+
+  </form>
+  </div>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-ride',
@@ -6,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-ride.component.scss']
 })
 export class AddRideComponent {
+
+  constructor(
+    private _router:Router
+  ){
+
+  }
+
+  navigateToHome(){
+    this._router.navigateByUrl('/');
+  }
 
 }

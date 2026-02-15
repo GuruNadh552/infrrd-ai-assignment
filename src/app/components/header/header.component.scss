@@ -1,0 +1,27 @@
+.navbar{
+  background-color: #fffc;
+  border-bottom: 1px solid rgb(243 244 246);
+  z-index: 40;
+  top: 0;
+  position: sticky;
+  box-sizing: border-box;
+  padding:  8px 120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .nav-title{
+    color: rgb(17,24,39);
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+  .nav-sub-title{
+    color : rgb(107 114 128);
+    font-size: .75rem;
+    line-height: 1rem;
+  }
+  .fs-20{
+    font-size: 20px;
+  }
+}

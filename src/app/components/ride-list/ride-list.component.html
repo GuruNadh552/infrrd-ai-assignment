@@ -1,0 +1,19 @@
+<div class="ride-container">
+  <div class="ride-count-header">Showing 0 of 4 rides</div>
+  <div class="ride-list">
+    <ng-container *ngFor="let i of [1,2,3,4,5]">
+        <app-ride-card></app-ride-card>
+    </ng-container>
+  </div>
+  <div class="ride-not-found">
+    <div class="ride-not-found-icon">
+      <i class="material-icons">search_off</i>
+    </div>
+    <div class="ride-not-found-title">
+      No rides found
+    </div>
+    <div class="ride-not-found-subtitle">
+      Try adjusting your filters or add a new ride to get started
+    </div>
+  </div>
+</div>

@@ -1,0 +1,152 @@
+.ride-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.car {
+    background-color: rgb(238 242 255);
+    color: rgb(79 70 229);
+  }
+
+  &.bike {
+    background-color: rgb(255 251 235);
+    color: rgb(217 119 6);
+  }
+
+  border-radius: 8px;
+}
+.ride-card {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: .75rem;
+  border: 1px solid #e5e7ebc5;
+
+  .ride-details,
+  .ride-vehice-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .ride-vehice-details {
+    gap: 12px;
+  }
+
+  .vehicle-no {
+    font-weight: 600;
+    color: rgb(17 24 39);
+
+    .chip {
+      color: rgb(75, 85, 99);
+      background-color: rgb(243 244 246);
+      padding: 4px;
+      font-weight: 400;
+      color: #000;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+  }
+
+  .employee-id {
+    color: rgb(107 114 128);
+    font-size: .875rem;
+    line-height: 1.25rem;
+    margin-top: .125rem;
+  }
+
+  .ride-time,
+  .seats-left {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    i {
+      font-size: 16px;
+      color: rgb(156 163 175);
+    }
+  }
+
+  .ride-time {
+    font-weight: 600;
+  }
+
+  .seats-left {
+    font-size: .875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+
+    &.green {
+      color: rgb(5 150 105)
+    }
+
+    &.red {
+      color: red;
+    }
+  }
+}
+
+.destination-details {
+display: flex;
+align-items: center;
+justify-content: space-between;
+background-color: rgb(249 250 251);
+padding: 0.75rem 1rem;
+margin: 20px 0px;
+border-radius: 0.5rem;
+}
+
+.booking-container {
+.button-full {
+  width: 100%;
+}
+
+.form-booking-details {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  input {
+    flex: 1;
+    height: 36px;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 0px 12px;
+  }
+
+  .bg-green {
+    background-color: rgb(5 150 105);
+  }
+}
+}
+
+.from,
+.to {
+display: flex;
+align-items: center;
+gap: 4px;
+font-weight: 500;
+font-size: .875rem;
+line-height: 1.25rem;
+color: rgb(55 65 81);
+
+i {
+  font-size: 12px;
+}
+}
+
+.from i {
+color: green;
+}
+
+.to i {
+color: red;
+}
+
+.arrow {
+font-size: 16px;
+color: rgb(209 213 219);
+}
